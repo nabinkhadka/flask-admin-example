@@ -1,4 +1,5 @@
 from app import app
+from app import csv_handler
 from flask import request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 import os
@@ -24,6 +25,8 @@ def upload_file():
         if _file and allowed_file(_file.filename):
             filename = secure_filename(_file.filename)
             _file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            handler = csv_handler.CSVHandler(filename)
+            handler.start_job()
             flash('File uploaded successfully')
             return redirect('/')
         else:

@@ -15,7 +15,7 @@ class CSVHandler(object):
         self.file_name = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
         self.chunk_size = chunk_size
 
-    def read(self):
+    def start_job(self):
 
         for df in pd.read_csv(
                 self.file_name,
@@ -40,4 +40,4 @@ class CSVHandler(object):
 
 if __name__ == '__main__':
     handler = CSVHandler('~/Downloads/huge.csv', 1000)
-    handler.read()
+    handler.start_job()
