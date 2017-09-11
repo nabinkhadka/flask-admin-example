@@ -1,0 +1,14 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <form method=post enctype=multipart/form-data action="/upload">
+        <h2>Add records</h2>
+        <span>Upload csv file in proper format</span>
+        <br><br><br><br>
+      <p>
+          <input type=file name=file>
+          <br><br>
+          <input type=submit value=Upload>
+      </p>
+    </form>
+{% endblock %}
